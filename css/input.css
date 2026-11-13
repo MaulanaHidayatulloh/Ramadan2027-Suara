@@ -1,0 +1,423 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Playfair Display", serif;
+
+  --color-primary: #08784e;
+  --color-primary-dark: #064e35;
+  --color-primary-light: #dff5e9;
+  --color-accent: #b9e6ca;
+}
+
+/* BASE */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+  }
+}
+
+/* NAVIGATION */
+@utility navbar {
+  background: rgba(6, 78, 53, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@layer components {
+  .nav-link {
+    position: relative;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.25s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #b9e6ca;
+  }
+
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    background: #b9e6ca;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    transition: background 0.2s ease;
+  }
+
+  .mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* HERO */
+@utility hero-section {
+  background:
+    radial-gradient(
+      circle at 75% 48%,
+      rgba(18, 135, 89, 0.42),
+      transparent 38%
+    ),
+    linear-gradient(125deg, #064e35 0%, #075b3d 48%, #032f25 100%);
+}
+
+@utility hero-glow {
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(120, 220, 166, 0.13),
+      transparent 40%
+    ),
+    radial-gradient(ellipse at 85% 90%, rgba(0, 0, 0, 0.2), transparent 45%);
+}
+
+@utility ramadan-decorations {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@utility ramadan-moon {
+  position: absolute;
+  top: 40%;
+  left: 13%;
+  rotate: 25deg;
+  font-size: clamp(130px, 20vw, 230px);
+  line-height: 1;
+  color: white;
+  opacity: 0.18;
+  text-shadow: 0 0 70px rgba(185, 230, 202, 0.5);
+  animation: moon-float 6s ease-in-out infinite;
+}
+
+@utility ramadan-star {
+  position: absolute;
+  color: white;
+  text-shadow: 0 0 15px rgba(185, 230, 202, 0.8);
+  animation: star-twinkle 3s ease-in-out infinite;
+}
+
+@utility ramadan-lantern {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: lantern-swing 5s ease-in-out infinite;
+}
+
+@utility lantern-string {
+  width: 1px;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    rgba(185, 230, 202, 0.1),
+    rgba(185, 230, 202, 0.8)
+  );
+}
+
+@utility lantern-body {
+  position: relative;
+  width: 48px;
+  height: 65px;
+  margin-top: 4px;
+  border: 2px solid white;
+  border-radius: 12px 12px 18px 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(185, 230, 202, 0.25),
+    rgba(8, 120, 78, 0.3)
+  );
+  box-shadow:
+    0 0 20px rgba(185, 230, 202, 0.25),
+    inset 0 0 15px rgba(185, 230, 202, 0.2);
+}
+
+.lantern-body::before,
+.lantern-body::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 28px;
+  height: 5px;
+  border: 1px solid white;
+  border-radius: 4px;
+  transform: translateX(-50%);
+}
+
+.lantern-body::before {
+  top: -6px;
+}
+
+.lantern-body::after {
+  bottom: -6px;
+}
+
+.lantern-body span {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: white;
+  filter: blur(12px);
+  opacity: 0.8;
+}
+
+.lantern-left {
+  left: 10%;
+  transform: scale(0.85);
+}
+
+.lantern-right {
+  right: 12%;
+  transform: scale(1.1);
+  animation-delay: 1s;
+}
+
+.star-1 {
+  top: 18%;
+  left: 17%;
+  font-size: 24px;
+}
+.star-2 {
+  top: 35%;
+  left: 20%;
+  font-size: 17px;
+  animation-delay: 0.5s;
+}
+.star-3 {
+  top: 15%;
+  right: 20%;
+  font-size: 22px;
+  animation-delay: 1s;
+}
+.star-4 {
+  top: 38%;
+  right: 13%;
+  font-size: 19px;
+  animation-delay: 1.5s;
+}
+
+.hero-content,
+.prayer-overlay {
+  position: relative;
+  z-index: 2;
+}
+
+/* COUNTDOWN */
+@utility countdown-item {
+  display: flex;
+  min-width: 75px;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+@utility countdown-number {
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility countdown-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@utility countdown-separator {
+  padding-top: 3px;
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* PRAYER WIDGET */
+@utility prayer-glass {
+  background: rgba(5, 67, 47, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+@utility prayer-item {
+  display: flex;
+  min-width: 0;
+  min-height: 145px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: 12px 5px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+@utility prayer-name {
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@utility prayer-icon {
+  color: white;
+  font-size: 30px;
+  line-height: 1;
+}
+
+@utility prayer-value {
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 21px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.prayer-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.prayer-item.prayer-active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(185, 230, 202, 0.5);
+}
+
+.prayer-active .prayer-name,
+.prayer-active .prayer-value {
+  color: #5ee9b5;
+  font-weight: 700;
+}
+
+/* ANIMATIONS */
+@keyframes moon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes lantern-swing {
+  0%,
+  100% {
+    rotate: -4deg;
+  }
+  50% {
+    rotate: 4deg;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 767px) {
+  .ramadan-moon {
+    top: 25%;
+    font-size: 145px;
+  }
+
+  .lantern-left {
+    left: 3%;
+    transform: scale(0.65);
+  }
+
+  .lantern-right {
+    right: 3%;
+    transform: scale(0.65);
+  }
+
+  .star-1 {
+    left: 10%;
+  }
+  .star-3 {
+    right: 10%;
+  }
+
+  .countdown-item {
+    min-width: 65px;
+  }
+
+  .countdown-number {
+    font-size: 2.8rem;
+  }
+
+  .countdown-separator {
+    font-size: 2rem;
+  }
+
+  .prayer-item {
+    min-height: 115px;
+    gap: 8px;
+    padding: 9px 3px;
+  }
+
+  .prayer-name {
+    font-size: 11px;
+  }
+
+  .prayer-icon {
+    font-size: 24px;
+  }
+
+  .prayer-value {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-section {
+    min-height: 990px;
+  }
+
+  .countdown-item {
+    min-width: 55px;
+  }
+
+  .countdown-number {
+    font-size: 2.3rem;
+  }
+
+  .prayer-value {
+    font-size: 15px;
+  }
+}

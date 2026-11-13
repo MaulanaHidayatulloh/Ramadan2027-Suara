@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Ramadan 2027 - Suara.com</title>
+    <meta
+      name="description"
+      content="Temukan informasi dan inspirasi Ramadan bersama Suara.com."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./dist/output.css" />
+
+    <!-- Icon -->
+    <link rel="icon" href="./assets/icons/home-back-logo.svg" />
+  </head>
+
+  <body class="bg-white text-black antialiased">
+    <!-- NAVBAR -->
+    <nav class="navbar fixed inset-x-0 top-0 z-50">
+      <div
+        class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 lg:px-10"
+      >
+        <!-- Logo -->
+        <a href="#beranda" class="flex flex-col">
+          <span class="font-display text-2xl font-bold text-white">
+            Ramadan<span class="text-emerald-300">Suara</span>
+          </span>
+          <span
+            class="text-[9px] font-semibold tracking-[0.25em] text-emerald-300"
+          >
+            1448 HIJRIAH
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden items-center gap-9 md:flex">
+          <a href="#beranda" class="nav-link active">Beranda</a>
+          <a href="#suarawaktu" class="nav-link">Suara &amp; Waktu</a>
+          <a href="#kebaikan" class="nav-link">Suara Kebaikan</a>
+          <a href="#inspirasi" class="nav-link">Suara Inspirasi</a>
+        </div>
+
+        <!-- Suara.com -->
+        <a
+          href="https://www.suara.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Kunjungi Suara.com"
+          class="hidden h-10 w-10 items-center justify-center rounded-full transition md:flex lg:h-12 lg:w-12"
+        >
+          <img src="./assets/icons/home-back-logo.svg" alt="logo_back_suara" />
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button
+          id="menu-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:bg-white/10 md:hidden"
+        >
+          <svg
+            id="menu-icon"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="mobile-menu"
+        class="hidden max-h-[calc(100dvh-76px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-emerald-950/95 px-6 py-5 backdrop-blur-xl md:hidden"
+      >
+        <div class="flex flex-col gap-2">
+          <a href="#beranda" class="mobile-nav-link">Beranda</a>
+          <a href="#suarawaktu" class="mobile-nav-link">Suara &amp; Waktu</a>
+          <a href="#kebaikan" class="mobile-nav-link">Suara Kebaikan</a>
+          <a href="#inspirasi" class="mobile-nav-link">Suara Inspirasi</a>
+        </div>
+
+        <!-- Media Lainnya -->
+        <div class="mt-6 border-t border-dashed border-white/20 pt-5">
+          <p
+            class="mb-5 text-center text-[10px] font-bold tracking-[0.25em] text-emerald-300 uppercase"
+          >
+            Media Lainnya
+          </p>
+
+          <div class="grid grid-cols-3 gap-5">
+            <a href="https://www.suara.com/" target="_blank">
+              <img
+                src="./assets/icons/suara.svg"
+                alt="Suara"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.matamata.com/">
+              <img
+                src="./assets/icons/matamata.svg"
+                alt="MataMata"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.bolatimes.com/">
+              <img
+                src="./assets/icons/bolatimes.svg"
+                alt="BolaTimes"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.hitekno.com/">
+              <img
+                src="./assets/icons/hitekno.svg"
+                alt="HiTekno"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.dewiku.com/">
+              <img
+                src="./assets/icons/dewiku.svg"
+                alt="Dewiku"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.mobimoto.com/">
+              <img
+                src="./assets/icons/mobimoto.svg"
+                alt="Mobimoto"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.guideku.com/">
+              <img
+                src="./assets/icons/guideku.svg"
+                alt="Guideku"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.himedik.com/">
+              <img
+                src="./assets/icons/himedik.svg"
+                alt="Himedik"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <img
+              src="./assets/icons/regional.svg"
+              alt="Regional"
+              class="h-7 w-full object-contain"
+            />
+            <img
+              src="./assets/icons/clickmov.svg"
+              alt="Clickmov"
+              class="h-7 w-full object-contain"
+            />
+            <a href="https://yoursay.suara.com/">
+              <img
+                src="./assets/icons/yoursay.svg"
+                alt="YourSay"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.serbada.com/">
+              <img
+                src="./assets/icons/serbada.svg"
+                alt="Serbada"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.theindonesia.co/">
+              <img
+                src="./assets/icons/theind.svg"
+                alt="The Ind"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://hits.suara.com/">
+              <img
+                src="./assets/icons/beritahits.svg"
+                alt="Berita Hits"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a href="https://www.iklandisini.com/">
+              <img
+                src="./assets/icons/iklandisini.svg"
+                alt="Iklan Disini"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Backdrop -->
+    <div
+      id="mobile-menu-backdrop"
+      class="fixed inset-0 z-40 hidden bg-black/40 backdrop-blur-sm md:hidden"
+      aria-hidden="true"
+    ></div>
+
+    <!-- HERO SECTION -->
+    <header
+      id="beranda"
+      class="hero-section relative isolate min-h-[960px] overflow-hidden"
+    >
+      <div class="hero-glow pointer-events-none absolute inset-0"></div>
+
+      <!-- Ramadan Decorations -->
+      <div class="ramadan-decorations" aria-hidden="true">
+        <div class="ramadan-moon">⏾</div>
+        <span class="ramadan-star star-1">✦</span>
+        <span class="ramadan-star star-2">✧</span>
+        <span class="ramadan-star star-3">✦</span>
+        <span class="ramadan-star star-4">✧</span>
+
+        <!-- Lentera Kiri -->
+        <div class="ramadan-lantern lantern-left">
+          <div class="lantern-string"></div>
+          <div class="lantern-body">
+            <span></span>
+          </div>
+        </div>
+
+        <!-- Lentera Kanan -->
+        <div class="ramadan-lantern lantern-right">
+          <div class="lantern-string"></div>
+          <div class="lantern-body">
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Heading & Countdown -->
+      <div
+        class="hero-content relative z-20 mx-auto flex max-w-7xl flex-col items-center px-5 pt-32 text-center sm:pt-36"
+      >
+        <p
+          class="text-xs font-semibold tracking-[0.3em] text-emerald-200 uppercase"
+        >
+          Ramadan 1448 Hijriah
+        </p>
+
+        <h1
+          class="mt-4 font-display text-4xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl"
+        >
+          Lorem <span class="text-emerald-300">Ipsum</span>
+        </h1>
+
+        <p class="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:text-base">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <p
+          id="countdown-title"
+          class="mt-8 text-[10px] font-semibold tracking-[0.3em] text-emerald-200 uppercase sm:text-xs"
+        >
+          Waktu Berbuka Dalam
+        </p>
+
+        <!-- Countdown -->
+        <div class="mt-5 flex items-start justify-center gap-3 sm:gap-7">
+          <div class="countdown-item">
+            <span id="count-hours" class="countdown-number">00</span>
+            <span class="countdown-label">Jam</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-item">
+            <span id="count-minutes" class="countdown-number">00</span>
+            <span class="countdown-label">Menit</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-item">
+            <span id="count-seconds" class="countdown-number text-emerald-300"
+              >00</span
+            >
+            <span class="countdown-label">Detik</span>
+          </div>
+        </div>
+
+        <p id="countdown-caption" class="mt-5 text-xs text-white">
+          Menghitung waktu menuju berbuka puasa
+        </p>
+      </div>
+
+      <!-- Prayer Widget -->
+      <div
+        class="prayer-overlay absolute inset-x-0 z-30 mx-auto w-full max-w-6xl mt-15 px-4 sm:px-6"
+      >
+        <div
+          class="prayer-glass rounded-2xl border border-white/30 p-4 backdrop-blur-xl sm:rounded-[28px] sm:p-6"
+        >
+          <!-- Location -->
+          <div
+            class="flex items-center justify-between gap-3 rounded-xl bg-emerald-950/45 px-4 py-4 sm:px-6"
+          >
+            <div class="min-w-0">
+              <h2
+                id="location-name"
+                class="truncate text-lg font-bold text-white sm:text-2xl"
+              >
+                Mendeteksi lokasi...
+              </h2>
+
+              <p
+                id="location-description"
+                class="mt-1 text-xs text-emerald-100/80 sm:text-sm"
+              >
+                Mohon tunggu sebentar
+              </p>
+            </div>
+
+            <button
+              id="refresh-location"
+              type="button"
+              aria-label="Perbarui lokasi"
+              title="Perbarui lokasi"
+              class="shrink-0 rounded-full p-2 text-white transition hover:bg-white/15"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 4v6h6M20 20v-6h-6M5.6 9a7 7 0 0 1 11.6-2L20 12M4 12l2.8 5a7 7 0 0 0 11.6-2"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Prayer Schedule -->
+          <div
+            id="prayer-list"
+            class="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3"
+          >
+            <div id="prayer-imsak-item" class="prayer-item">
+              <p class="prayer-name">Imsak</p>
+              <div class="prayer-icon">🍽️</div>
+              <p id="prayer-imsak" class="prayer-value">--:--</p>
+            </div>
+
+            <div id="prayer-fajr-item" class="prayer-item">
+              <p class="prayer-name">Subuh</p>
+              <div class="prayer-icon">☁️</div>
+              <p id="prayer-fajr" class="prayer-value">--:--</p>
+            </div>
+
+            <div id="prayer-dhuhr-item" class="prayer-item">
+              <p class="prayer-name">Dzuhur</p>
+              <div class="prayer-icon">☀️</div>
+              <p id="prayer-dhuhr" class="prayer-value">--:--</p>
+            </div>
+
+            <div id="prayer-asr-item" class="prayer-item">
+              <p class="prayer-name">Ashar</p>
+              <div class="prayer-icon">🌤️</div>
+              <p id="prayer-asr" class="prayer-value">--:--</p>
+            </div>
+
+            <div id="prayer-maghrib-item" class="prayer-item">
+              <p class="prayer-name">Maghrib</p>
+              <div class="prayer-icon">🌥️</div>
+              <p id="prayer-maghrib" class="prayer-value">--:--</p>
+            </div>
+
+            <div id="prayer-isha-item" class="prayer-item">
+              <p class="prayer-name">Isya</p>
+              <div class="prayer-icon">🌙</div>
+              <p id="prayer-isha" class="prayer-value">--:--</p>
+            </div>
+          </div>
+
+          <!-- Widget Footer -->
+          <div
+            class="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-white/20 pt-3"
+          >
+            <p
+              id="prayer-date"
+              class="text-[10px] text-emerald-100/70 sm:text-xs"
+            >
+              Memuat tanggal...
+            </p>
+
+            <p
+              id="prayer-status"
+              class="text-[10px] text-emerald-100/70 sm:text-xs"
+            >
+              Mengambil jadwal salat...
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-20 bg-gradient-to-t from-emerald-950/35 to-transparent"
+      ></div>
+    </header>
+
+    <!-- FUTURE CONTENT SECTIONS -->
+    <main>
+      <section id="suarawaktu" class="scroll-mt-24">
+        <!-- Konten Suara & Waktu akan dibuat pada tahap berikutnya -->
+      </section>
+
+      <section id="kebaikan" class="scroll-mt-24">
+        <!-- Konten Suara Kebaikan akan dibuat pada tahap berikutnya -->
+      </section>
+
+      <section id="inspirasi" class="scroll-mt-24">
+        <!-- Konten Suara Inspirasi akan dibuat pada tahap berikutnya -->
+      </section>
+    </main>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
