@@ -3,7 +3,6 @@
 @theme {
   --font-sans: "DM Sans", sans-serif;
   --font-display: "Playfair Display", serif;
-
   --color-primary: #08784e;
   --color-primary-dark: #064e35;
   --color-primary-light: #dff5e9;
@@ -24,7 +23,7 @@
 }
 
 /* NAVIGATION */
-@utility navbar {
+.navbar {
   background: rgba(6, 78, 53, 0.96);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
@@ -71,7 +70,7 @@
 }
 
 /* HERO */
-@utility hero-section {
+.hero-section {
   background:
     radial-gradient(
       circle at 75% 48%,
@@ -81,7 +80,30 @@
     linear-gradient(125deg, #064e35 0%, #075b3d 48%, #032f25 100%);
 }
 
-@utility hero-glow {
+.hero-section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(3, 47, 37, 0.45) 35%,
+    rgba(240, 250, 245, 0.65) 75%,
+    #f0faf5 100%
+  );
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-glow {
   background:
     radial-gradient(
       ellipse at 15% 10%,
@@ -91,7 +113,7 @@
     radial-gradient(ellipse at 85% 90%, rgba(0, 0, 0, 0.2), transparent 45%);
 }
 
-@utility ramadan-decorations {
+.ramadan-decorations {
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -99,9 +121,9 @@
   z-index: 0;
 }
 
-@utility ramadan-moon {
+.ramadan-moon {
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 13%;
   rotate: 25deg;
   font-size: clamp(130px, 20vw, 230px);
@@ -112,14 +134,14 @@
   animation: moon-float 6s ease-in-out infinite;
 }
 
-@utility ramadan-star {
+.ramadan-star {
   position: absolute;
   color: white;
   text-shadow: 0 0 15px rgba(185, 230, 202, 0.8);
   animation: star-twinkle 3s ease-in-out infinite;
 }
 
-@utility ramadan-lantern {
+.ramadan-lantern {
   position: absolute;
   top: 0;
   display: flex;
@@ -129,7 +151,7 @@
   animation: lantern-swing 5s ease-in-out infinite;
 }
 
-@utility lantern-string {
+.lantern-string {
   width: 1px;
   height: 150px;
   background: linear-gradient(
@@ -139,7 +161,7 @@
   );
 }
 
-@utility lantern-body {
+.lantern-body {
   position: relative;
   width: 48px;
   height: 65px;
@@ -201,23 +223,40 @@
   left: 17%;
   font-size: 24px;
 }
+
 .star-2 {
-  top: 35%;
+  top: 28%;
   left: 20%;
   font-size: 17px;
   animation-delay: 0.5s;
 }
+
 .star-3 {
   top: 15%;
   right: 20%;
   font-size: 22px;
   animation-delay: 1s;
 }
+
 .star-4 {
-  top: 38%;
+  top: 40%;
   right: 13%;
   font-size: 19px;
   animation-delay: 1.5s;
+}
+
+.star-5 {
+  top: 28%;
+  right: 23%;
+  font-size: 19px;
+  animation-delay: 1s;
+}
+
+.star-6 {
+  top: 45%;
+  left: 28%;
+  font-size: 19px;
+  animation-delay: 1s;
 }
 
 .hero-content,
@@ -227,7 +266,7 @@
 }
 
 /* COUNTDOWN */
-@utility countdown-item {
+.countdown-item {
   display: flex;
   min-width: 75px;
   flex-direction: column;
@@ -235,7 +274,7 @@
   gap: 7px;
 }
 
-@utility countdown-number {
+.countdown-number {
   color: white;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
@@ -243,7 +282,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-@utility countdown-label {
+.countdown-label {
   color: rgba(255, 255, 255, 0.8);
   font-size: 10px;
   font-weight: 600;
@@ -251,20 +290,20 @@
   text-transform: uppercase;
 }
 
-@utility countdown-separator {
+.countdown-separator {
   padding-top: 3px;
   color: white;
   font-size: 2.5rem;
 }
 
 /* PRAYER WIDGET */
-@utility prayer-glass {
+.prayer-glass {
   background: rgba(5, 67, 47, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
 }
 
-@utility prayer-item {
+.prayer-item {
   display: flex;
   min-width: 0;
   min-height: 145px;
@@ -281,19 +320,19 @@
     transform 0.25s ease;
 }
 
-@utility prayer-name {
+.prayer-name {
   color: white;
   font-size: 13px;
   font-weight: 500;
 }
 
-@utility prayer-icon {
+.prayer-icon {
   color: white;
   font-size: 30px;
   line-height: 1;
 }
 
-@utility prayer-value {
+.prayer-value {
   color: white;
   font-family: var(--font-sans);
   font-size: 21px;
@@ -314,6 +353,105 @@
 .prayer-active .prayer-value {
   color: #5ee9b5;
   font-weight: 700;
+}
+
+/* ARTICLE SLIDER */
+.article-slider {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-padding-inline: 2px;
+}
+
+.article-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.article-art {
+  isolation: isolate;
+}
+
+.article-art::before,
+.article-art::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.article-art::before {
+  width: 230px;
+  height: 230px;
+}
+
+.article-art::after {
+  width: 170px;
+  height: 170px;
+}
+
+.article-art-one {
+  background: radial-gradient(circle at 50% 45%, #4eaa7b, #08784e 65%, #064e35);
+}
+
+.article-art-two {
+  background: radial-gradient(circle at 70% 30%, #9acb9d, #367d60 55%, #164c3b);
+}
+
+.article-art-three {
+  background: radial-gradient(circle at 35% 35%, #b7c99a, #648b61 55%, #315d43);
+}
+
+.article-art-four {
+  background: radial-gradient(circle at 65% 40%, #a5c7ad, #477d68 55%, #164c3b);
+}
+
+.article-art-five {
+  background: radial-gradient(circle at 40% 40%, #c1d6a9, #6b9c70 55%, #285b43);
+}
+
+.article-art-six {
+  background: radial-gradient(circle at 55% 35%, #8ac7a4, #3a8769 55%, #064e35);
+}
+
+.article-art-number {
+  position: absolute;
+  top: 15px;
+  right: 22px;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.article-art-symbol {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-display);
+  font-size: clamp(90px, 12vw, 140px);
+  line-height: 1;
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+}
+
+.article-art-star {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.article-star-one {
+  top: 25%;
+  left: 25%;
+  font-size: 24px;
+}
+
+.article-star-two {
+  right: 25%;
+  bottom: 25%;
+  font-size: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-slider {
+    scroll-behavior: auto;
+  }
 }
 
 /* ANIMATIONS */

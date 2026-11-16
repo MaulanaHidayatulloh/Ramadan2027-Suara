@@ -223,7 +223,7 @@
     ></div>
 
     <!-- HERO SECTION -->
-    <header
+    <section
       id="beranda"
       class="hero-section relative isolate min-h-[960px] overflow-hidden"
     >
@@ -236,6 +236,8 @@
         <span class="ramadan-star star-2">✧</span>
         <span class="ramadan-star star-3">✦</span>
         <span class="ramadan-star star-4">✧</span>
+        <span class="ramadan-star star-5">✦</span>
+        <span class="ramadan-star star-6">✦</span>
 
         <!-- Lentera Kiri -->
         <div class="ramadan-lantern lantern-left">
@@ -343,7 +345,7 @@
               type="button"
               aria-label="Perbarui lokasi"
               title="Perbarui lokasi"
-              class="shrink-0 rounded-full p-2 text-white transition hover:bg-white/15"
+              class="shrink-0 cursor-pointer rounded-full p-2 text-white transition hover:bg-white/15"
             >
               <svg
                 class="h-6 w-6"
@@ -425,12 +427,529 @@
       </div>
 
       <div
-        class="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-20 bg-gradient-to-t from-emerald-950/35 to-transparent"
+        class="pointer-events-none absolute bottom-0 left-0 z-10 h-32 w-full bg-gradient-to-b from-transparent via-[#08784e]/40 to-[#f0faf5]"
       ></div>
-    </header>
+    </section>
 
-    <!-- FUTURE CONTENT SECTIONS -->
-    <main>
+    <main class="relative bg-[#f0faf5]">
+      <!-- SECTION ARTICLE SLIDER -->
+      <section id="artikel" class="overflow-hidden py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-5 lg:px-10">
+          <!-- Section Heading -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+          >
+            <div class="max-w-xl">
+              <h2
+                class="font-display text-3xl leading-tight font-bold text-gray-900 sm:text-4xl lg:text-5xl"
+              >
+                Lorem ipsum dolor sit amet consectetur.
+              </h2>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="flex items-center gap-3">
+              <span
+                id="article-counter"
+                class="mr-2 text-sm font-semibold text-gray-500"
+              >
+                01 <span class="mx-1 text-primary/50">/</span> 06
+              </span>
+
+              <button
+                id="article-prev"
+                type="button"
+                aria-label="Artikel sebelumnya"
+                class="flex cursor-pointer h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-primary text-white transition hover:border-primary hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-30"
+              >
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 18l-6-6 6-6"
+                  />
+                </svg>
+              </button>
+
+              <button
+                id="article-next"
+                type="button"
+                aria-label="Artikel berikutnya"
+                class="flex cursor-pointer h-11 w-11 items-center justify-center rounded-full bg-primary text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-30"
+              >
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 18l6-6-6-6"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Article Slider -->
+          <div
+            id="article-slider"
+            class="article-slider flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-5 sm:gap-6"
+            aria-label="Daftar artikel Ramadan"
+          >
+            <!-- Article 1 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Inspirasi</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 2 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Kebaikan</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 3 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Kesehatan</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 4 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Kebaikan</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 5 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Keluarga</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 6 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Kesehatan</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 7 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Inspirasi</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 8 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Kebaikan</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 9 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Keluarga</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Article 10 -->
+            <article
+              class="w-[85%] shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
+            >
+              <a
+                href="https://example.com"
+                target="_blank"
+                class="group flex h-full flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <div class="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src="assets/images/artikel_ramadan.webp"
+                    alt="Ilustrasi Ramadan"
+                    class="h-full w-full object-cover transition duration-500"
+                  />
+                  <span
+                    class="absolute bottom-5 left-5 rounded-full border border-white/30 bg-primary px-3 py-1.5 text-[10px] font-semibold tracking-widest text-white uppercase backdrop-blur-sm"
+                    >Kesehatan</span
+                  >
+                </div>
+                <div class="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3
+                    class="font-display text-xl leading-snug font-bold text-gray-900 transition group-hover:text-primary sm:text-2xl"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing.
+                  </h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
+                    quidem sint rerum. Quidem, distinctio esse!
+                  </p>
+                  <div
+                    class="mt-7 flex items-center justify-between border-t border-black/20 pt-4"
+                  >
+                    <span class="text-xs text-gray-500">Team Suara.com</span>
+                    <span
+                      class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-light text-primary transition group-hover:bg-primary group-hover:text-white"
+                      >↗</span
+                    >
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+
+          <!-- Slider Progress -->
+          <div
+            class="mt-5 h-1 w-full overflow-hidden rounded-full bg-primary/10"
+          >
+            <div
+              id="article-progress"
+              class="h-full w-0 rounded-full bg-primary transition-all duration-300"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FUTURE CONTENT SECTIONS -->
       <section id="suarawaktu" class="scroll-mt-24">
         <!-- Konten Suara & Waktu akan dibuat pada tahap berikutnya -->
       </section>

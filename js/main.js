@@ -417,6 +417,83 @@ if (refreshLocation) {
   });
 }
 
+/* ARTICLE SLIDER */
+const articleSlider = document.getElementById("article-slider");
+
+if (articleSlider) {
+  const articlePrev = document.getElementById("article-prev");
+  const articleNext = document.getElementById("article-next");
+  const articleCounter = document.getElementById("article-counter");
+  const articleProgress = document.getElementById("article-progress");
+  const articleCards = articleSlider.querySelectorAll("article");
+  const totalArticles = articleCards.length;
+
+  function updateArticleSlider() {
+    const maxScroll = articleSlider.scrollWidth - articleSlider.clientWidth;
+
+    const currentScroll = articleSlider.scrollLeft;
+    const firstCard = articleCards[0];
+
+    if (!firstCard) return;
+
+    const sliderStyle = getComputedStyle(articleSlider);
+    const gap = parseFloat(sliderStyle.columnGap) || 0;
+    const cardStep = firstCard.offsetWidth + gap;
+
+    const isAtEnd = currentScroll >= maxScroll - 2;
+
+    const currentIndex = isAtEnd
+      ? totalArticles
+      : Math.min(
+          totalArticles,
+          Math.max(1, Math.round(currentScroll / cardStep) + 1),
+        );
+
+    const progress = maxScroll > 0 ? (currentScroll / maxScroll) * 100 : 100;
+
+    articleCounter.innerHTML = `
+    ${String(currentIndex).padStart(2, "0")}
+    <span class="mx-1 text-primary/40">/</span>
+    ${String(totalArticles).padStart(2, "0")}
+  `;
+
+    articleProgress.style.width = `${progress}%`;
+    articlePrev.disabled = currentScroll <= 2;
+    articleNext.disabled = currentScroll >= maxScroll - 2;
+  }
+
+  function moveArticleSlider(direction) {
+    const firstCard = articleCards[0];
+
+    if (!firstCard) return;
+
+    const sliderStyle = getComputedStyle(articleSlider);
+    const gap = parseFloat(sliderStyle.columnGap) || 0;
+    const cardStep = firstCard.offsetWidth + gap;
+
+    articleSlider.scrollBy({
+      left: cardStep * direction,
+      behavior: "smooth",
+    });
+  }
+
+  articlePrev.addEventListener("click", () => {
+    moveArticleSlider(-1);
+  });
+
+  articleNext.addEventListener("click", () => {
+    moveArticleSlider(1);
+  });
+
+  articleSlider.addEventListener("scroll", updateArticleSlider, {
+    passive: true,
+  });
+
+  window.addEventListener("resize", updateArticleSlider);
+
+  updateArticleSlider();
+}
+
 // INITIALIZE
 detectLocation();
 setInterval(updateActivePrayer, 60000);
