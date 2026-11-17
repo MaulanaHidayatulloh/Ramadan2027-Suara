@@ -1111,7 +1111,6 @@
             </p>
           </div>
 
-          <!-- PROGRAM GRID -->
           <div class="grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-6">
             <!-- CARD 1 -->
             <a
@@ -1274,8 +1273,658 @@
         </div>
       </section>
 
-      <section id="inspirasi" class="scroll-mt-24">
-        <!-- Konten Suara Inspirasi akan dibuat pada tahap berikutnya -->
+      <!-- SECTION SUARA INSPIRASI -->
+      <section id="inspirasi" class="bg-[#f0faf5] px-3 py-10 md:px-5 md:py-15">
+        <div
+          class="relative mx-auto max-w-7xl overflow-hidden rounded-[30px] border border-white/10 bg-gradient-to-br from-[#064e35] via-[#075b3d] to-[#032f25] px-5 py-12 md:rounded-[40px] md:px-10 md:py-16 lg:px-14"
+        >
+          <!-- DECORATIVE GLOW -->
+          <div
+            class="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-[#b9e6ca]/10 blur-[90px]"
+          ></div>
+          <div
+            class="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-[#b9e6ca]/10 blur-[100px]"
+          ></div>
+
+          <!-- DECORATION 1 -->
+          <div
+            class="pointer-events-none absolute right-3 top-3 md:right-5 md:top-5 rotate-12 text-[#b9e6ca]/25"
+          >
+            <svg
+              viewBox="0 0 120 150"
+              class="h-24 w-20 md:h-32 md:w-28"
+              fill="none"
+            >
+              <path
+                d="M60 22L94 56L60 90L26 56L60 22Z"
+                stroke="currentColor"
+                stroke-width="2.5"
+              />
+              <path
+                d="M60 22L60 90M26 56H94M43 39L77 73M77 39L43 73"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+
+          <!-- DECORATION 2-->
+          <div
+            class="pointer-events-none absolute -bottom-5 -left-8 text-[#b9e6ca]/20 md:bottom-0 md:left-0"
+          >
+            <svg
+              viewBox="0 0 260 180"
+              class="h-36 w-56 md:h-48 md:w-64"
+              fill="none"
+            >
+              <path
+                d="M-20 150C35 110 55 170 110 125C165 80 180 100 280 15"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M-20 170C35 130 65 190 125 145C185 100 200 120 280 40"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M-20 130C25 90 50 145 100 105C150 65 185 75 280 -5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+
+          <!-- DECORATION 3 -->
+          <div
+            class="pointer-events-none absolute -bottom-5 -right-8 rotate-180 text-[#b9e6ca]/20 md:bottom-0 md:right-0"
+          >
+            <svg
+              viewBox="0 0 260 180"
+              class="h-36 w-56 md:h-48 md:w-64"
+              fill="none"
+            >
+              <path
+                d="M-20 150C35 110 55 170 110 125C165 80 180 100 280 15"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M-20 170C35 130 65 190 125 145C185 100 200 120 280 40"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M-20 130C25 90 50 145 100 105C150 65 185 75 280 -5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+
+          <!-- MAIN CONTENT -->
+          <div class="relative z-10">
+            <!-- HEADER -->
+            <div
+              class="mb-10 flex flex-col gap-3 sm:mb-14 justify-center items-center sm:items-start"
+            >
+              <h2
+                class="font-display text-4xl leading-tight font-semibold text-white md:text-5xl lg:text-6xl"
+              >
+                Suara <span class="text-accent">Inspirasi</span>
+              </h2>
+
+              <p
+                class="text-center text-sm leading-7 text-white/80 sm:text-base sm:text-start sm:max-w-[80%]"
+              >
+                Setiap cerita punya makna. Temukan inspirasi, sudut pandang, dan
+                berbagai kisah yang menghidupkan semangat kebaikan sepanjang
+                bulan Ramadan.
+              </p>
+            </div>
+
+            <!-- CATEGORY TABS -->
+            <div
+              class="mb-9 flex justify-center overflow-x-auto pb-2 md:mb-10 md:overflow-visible md:pb-0"
+            >
+              <div
+                class="grid w-full max-w-[420px] grid-cols-4 items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1 backdrop-blur-md md:flex md:w-max md:max-w-none md:gap-2 md:p-1.5"
+              >
+                <button
+                  type="button"
+                  data-inspirasi-tab="takis"
+                  data-active="true"
+                  aria-selected="true"
+                  class="min-w-0 cursor-pointer rounded-full px-1 py-2.5 text-[10px] leading-tight font-semibold tracking-wide text-white/65 transition duration-300 hover:text-white data-[active=true]:bg-white data-[active=true]:text-primary-dark sm:text-xs md:min-w-[130px] md:px-7 md:py-3.5"
+                >
+                  Takis
+                </button>
+
+                <button
+                  type="button"
+                  data-inspirasi-tab="skeptis"
+                  data-active="false"
+                  aria-selected="false"
+                  class="min-w-0 cursor-pointer rounded-full px-1 py-2.5 text-[10px] leading-tight font-semibold tracking-wide text-white/65 transition duration-300 hover:text-white data-[active=true]:bg-white data-[active=true]:text-primary-dark sm:text-xs md:min-w-[130px] md:px-7 md:py-3.5"
+                >
+                  Skeptis
+                </button>
+
+                <button
+                  type="button"
+                  data-inspirasi-tab="serasa"
+                  data-active="false"
+                  aria-selected="false"
+                  class="min-w-0 cursor-pointer rounded-full px-1 py-2.5 text-[10px] leading-tight font-semibold tracking-wide text-white/65 transition duration-300 hover:text-white data-[active=true]:bg-white data-[active=true]:text-primary-dark sm:text-xs md:min-w-[130px] md:px-7 md:py-3.5"
+                >
+                  Serasa
+                </button>
+
+                <button
+                  type="button"
+                  data-inspirasi-tab="bersua"
+                  data-active="false"
+                  aria-selected="false"
+                  class="min-w-0 cursor-pointer rounded-full px-1 py-2.5 text-[9px] leading-tight font-semibold tracking-wide text-white/65 transition duration-300 hover:text-white data-[active=true]:bg-white data-[active=true]:text-primary-dark sm:text-[10px] md:min-w-[170px] md:px-7 md:py-3.5 md:text-xs"
+                >
+                  Bersua Ramadan
+                </button>
+              </div>
+            </div>
+
+            <!-- TAB CONTENT -->
+            <!-- TAKIS -->
+            <div
+              data-inspirasi-panel="takis"
+              class="inspirasi-scroll flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-5"
+            >
+              <!-- #1 -->
+              <a
+                href="https://www.instagram.com/reels/DViYAZGD1Hg/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis1.webp"
+                    alt="Takis 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #2 -->
+              <a
+                href="https://www.instagram.com/reels/DVsojtuj6HJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis2.webp"
+                    alt="Takis 2"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #3 -->
+              <a
+                href="https://www.instagram.com/reels/DWDwOBXD1_c/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis3.webp"
+                    alt="Takis 3"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #4 -->
+              <a
+                href="https://www.instagram.com/reels/DWGiN5nD4W2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis4.webp"
+                    alt="Takis 4"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #5 -->
+              <a
+                href="https://www.instagram.com/reels/DViYAZGD1Hg/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis1.webp"
+                    alt="Takis 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #6 -->
+              <a
+                href="https://www.instagram.com/reels/DVsojtuj6HJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis2.webp"
+                    alt="Takis 2"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #7 -->
+              <a
+                href="https://www.instagram.com/reels/DWDwOBXD1_c/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis3.webp"
+                    alt="Takis 3"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #8 -->
+              <a
+                href="https://www.instagram.com/reels/DWGiN5nD4W2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis4.webp"
+                    alt="Takis 4"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Takis</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem, ipsum dolor.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- SKEPTIS -->
+            <div
+              data-inspirasi-panel="skeptis"
+              class="hidden inspirasi-scroll flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-5"
+            >
+              <!-- #1 -->
+              <a
+                href="#"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis9.webp"
+                    alt="Skeptis 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"
+                ></div>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <span
+                    class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                    >Skeptis</span
+                  >
+                  <h3 class="mt-1 font-display text-xl font-semibold">
+                    Lorem, ipsum dolor.
+                  </h3>
+                </div>
+              </a>
+
+              <!-- #2 -->
+              <a
+                href="#"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis9.webp"
+                    alt="Skeptis 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"
+                ></div>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <span
+                    class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                    >Skeptis</span
+                  >
+                  <h3 class="mt-1 font-display text-xl font-semibold">
+                    Lorem, ipsum dolor.
+                  </h3>
+                </div>
+              </a>
+
+              <!-- #3 -->
+              <a
+                href="#"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis9.webp"
+                    alt="Skeptis 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"
+                ></div>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <span
+                    class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                    >Skeptis</span
+                  >
+                  <h3 class="mt-1 font-display text-xl font-semibold">
+                    Lorem, ipsum dolor.
+                  </h3>
+                </div>
+              </a>
+            </div>
+
+            <!-- SERASA -->
+            <div
+              data-inspirasi-panel="serasa"
+              class="hidden inspirasi-scroll flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-5"
+            >
+              <!-- #1 -->
+              <a
+                href="#"
+                class="group relative w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[440px]"
+              >
+                <div class="aspect-[16/9] overflow-hidden">
+                  <img
+                    src="assets/images/serasa1.webp"
+                    alt="Serasa 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Serasa</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+              <!-- #2 -->
+              <a
+                href="#"
+                class="group relative w-[300px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[440px]"
+              >
+                <div class="aspect-[16/9] overflow-hidden">
+                  <img
+                    src="assets/images/serasa2.webp"
+                    alt="Serasa 2"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                      >Serasa</span
+                    >
+                    <h3 class="mt-1 font-display text-xl font-semibold">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </h3>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- BERSUA RAMADAN -->
+            <div
+              data-inspirasi-panel="bersua"
+              class="hidden inspirasi-scroll flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-5"
+            >
+              <!-- #1 -->
+              <a
+                href="#"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis10.webp"
+                    alt="Bersua Ramadan 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"
+                ></div>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <span
+                    class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                    >Bersua Ramadan</span
+                  >
+                  <h3 class="mt-1 font-display text-xl font-semibold">
+                    Lorem ipsum dolor sit.
+                  </h3>
+                </div>
+              </a>
+
+              <!-- #2 -->
+              <a
+                href="#"
+                class="group relative w-[240px] shrink-0 snap-start overflow-hidden rounded-[24px] bg-white/10 sm:w-[260px]"
+              >
+                <div class="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="assets/images/takis10.webp"
+                    alt="Bersua Ramadan 1"
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"
+                ></div>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <span
+                    class="text-[10px] font-semibold tracking-widest text-accent uppercase"
+                    >Bersua Ramadan</span
+                  >
+                  <h3 class="mt-1 font-display text-xl font-semibold">
+                    Lorem ipsum dolor sit.
+                  </h3>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 

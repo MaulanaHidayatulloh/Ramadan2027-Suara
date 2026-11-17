@@ -454,6 +454,32 @@
   }
 }
 
+/* SUARA INSPIRASI - HORIZONTAL SCROLL */
+.inspirasi-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 230, 202, 0.55) rgba(255, 255, 255, 0.08);
+  scroll-padding-inline: 2px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.inspirasi-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.inspirasi-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.inspirasi-scroll::-webkit-scrollbar-thumb {
+  background: rgba(185, 230, 202, 0.55);
+  border-radius: 999px;
+}
+
+.inspirasi-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(185, 230, 202, 0.85);
+}
+
 /* ANIMATIONS */
 @keyframes moon-float {
   0%,

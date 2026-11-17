@@ -494,6 +494,29 @@ if (articleSlider) {
   updateArticleSlider();
 }
 
+/* SUARA INSPIRASI - CATEGORY TABS */
+const inspirasiTabs = document.querySelectorAll("[data-inspirasi-tab]");
+const inspirasiPanels = document.querySelectorAll("[data-inspirasi-panel]");
+
+inspirasiTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const selectedTab = tab.dataset.inspirasiTab;
+
+    inspirasiTabs.forEach((item) => {
+      const isActive = item === tab;
+
+      item.dataset.active = isActive ? "true" : "false";
+      item.setAttribute("aria-selected", String(isActive));
+    });
+
+    inspirasiPanels.forEach((panel) => {
+      const isActive = panel.dataset.inspirasiPanel === selectedTab;
+
+      panel.classList.toggle("hidden", !isActive);
+    });
+  });
+});
+
 // INITIALIZE
 detectLocation();
 setInterval(updateActivePrayer, 60000);
