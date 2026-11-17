@@ -25,9 +25,9 @@
 /* NAVIGATION */
 .navbar {
   background: rgba(6, 78, 53, 0.96);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 @layer components {
