@@ -517,6 +517,53 @@ inspirasiTabs.forEach((tab) => {
   });
 });
 
+/* NAVBAR - ACTIVE SECTION ON SCROLL */
+const navbar = document.querySelector(".navbar");
+
+const navigationSections = ["beranda", "suarawaktu", "kebaikan", "inspirasi"]
+  .map((id) => document.getElementById(id))
+  .filter(Boolean);
+
+const navigationLinks = document.querySelectorAll(
+  ".nav-link, .mobile-nav-link",
+);
+
+function updateActiveNavigation() {
+  if (!navigationSections.length) return;
+
+  const activationPoint = (navbar?.offsetHeight || 76) + 20;
+
+  let activeSection = navigationSections[0];
+
+  navigationSections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop <= activationPoint) {
+      activeSection = section;
+    }
+  });
+
+  navigationLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === `#${activeSection.id}`;
+
+    link.classList.toggle("active", isActive);
+
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+window.addEventListener("scroll", updateActiveNavigation, {
+  passive: true,
+});
+
+window.addEventListener("resize", updateActiveNavigation);
+
+updateActiveNavigation();
+
 // INITIALIZE
 detectLocation();
 setInterval(updateActivePrayer, 60000);

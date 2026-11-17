@@ -480,6 +480,12 @@
   background: rgba(185, 230, 202, 0.85);
 }
 
+/* MOBILE NAVIGATION - ACTIVE STATE */
+.mobile-nav-link.active {
+  color: #6ee7b7;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* ANIMATIONS */
 @keyframes moon-float {
   0%,
