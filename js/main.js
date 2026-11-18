@@ -565,5 +565,7 @@ window.addEventListener("resize", updateActiveNavigation);
 updateActiveNavigation();
 
 // INITIALIZE
-detectLocation();
-setInterval(updateActivePrayer, 60000);
+if (locationName && locationDescription) {
+  detectLocation();
+  setInterval(updateActivePrayer, 60000);
+}
