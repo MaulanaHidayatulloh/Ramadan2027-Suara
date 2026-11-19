@@ -1,23 +1,23 @@
-/* ELEMENTS */
+// ELEMENTS
 const citySelect = document.getElementById("provinsi-select");
+const locationPicker = document.getElementById("locationPicker");
+const locationSearch = document.getElementById("locationSearch");
+const locationOptions = document.getElementById("locationOptions");
 const loadButton = document.getElementById("load-schedule");
 const scheduleBody = document.getElementById("jadwal-body");
 const scheduleStatus = document.getElementById("schedule-status");
 const selectedCity = document.getElementById("judul-jadwal");
-
+const downloadButton = document.getElementById("downloadButton");
+const shareButton = document.getElementById("shareButton");
+const shareMenu = document.getElementById("shareMenu");
 const API_REGION = "https://www.emsifa.com/api-wilayah-indonesia/v2";
-
 const API_ALADHAN = "https://api.aladhan.com/v1";
-
 const API_NOMINATIM = "https://nominatim.openstreetmap.org/search";
-
 const RAMADAN_YEAR = 2027;
 const RAMADAN_MONTHS = [2, 3];
 const PRAYER_METHOD = 20;
-
 const REGION_CACHE_KEY = "ramadan2027_indonesia_regions";
 const REGION_CACHE_DURATION = 30 * 24 * 60 * 60 * 1000;
-
 const COORDINATE_CACHE_PREFIX = "ramadan2027_coordinates_";
 const COORDINATE_CACHE_DURATION = 180 * 24 * 60 * 60 * 1000;
 
@@ -25,10 +25,7 @@ let lastGeocodingRequest = 0;
 let currentSchedule = [];
 let currentRegion = null;
 
-/* =========================================
-   GENERAL HELPERS
-========================================= */
-
+// GENERAL HELPERS
 function cleanTime(value) {
   return value ? String(value).split(" ")[0] : "--:--";
 }
@@ -40,7 +37,6 @@ function setStatus(message, state = "") {
   scheduleStatus.dataset.state = state;
 
   scheduleStatus.classList.toggle("text-red-600", state === "error");
-
   scheduleStatus.classList.toggle("text-[#829487]", state !== "error");
 }
 
@@ -101,10 +97,7 @@ function saveCachedData(key, data) {
   }
 }
 
-/* =========================================
-   LOAD INDONESIA REGIONS
-========================================= */
-
+// LOAD INDONESIA REGIONS
 async function fetchIndonesiaRegions() {
   const cachedRegions = getCachedData(REGION_CACHE_KEY, REGION_CACHE_DURATION);
 
@@ -161,6 +154,7 @@ function renderRegionOptions(regionGroups) {
   citySelect.innerHTML = "";
 
   const placeholder = document.createElement("option");
+
   placeholder.value = "";
   placeholder.textContent = "Pilih Kota / Kabupaten";
   placeholder.disabled = true;
@@ -172,6 +166,7 @@ function renderRegionOptions(regionGroups) {
 
   regionGroups.forEach(({ province, regencies }) => {
     const optgroup = document.createElement("optgroup");
+
     optgroup.label = province.name;
 
     regencies.forEach((regency) => {
@@ -183,6 +178,7 @@ function renderRegionOptions(regionGroups) {
       option.dataset.regionId = regency.id;
 
       optgroup.appendChild(option);
+
       totalRegions += 1;
     });
 
@@ -207,11 +203,138 @@ function renderRegionOptions(regionGroups) {
   }
 
   updateSelectedRegion();
+  syncLocationSearchValue();
 
   setStatus(
     `${totalRegions} pilihan kabupaten/kota dari ${regionGroups.length} provinsi.`,
   );
 }
+
+// SEARCHABLE LOCATION DROPDOWN
+function syncLocationSearchValue() {
+  if (!citySelect || !locationSearch) return;
+
+  const selectedOption = citySelect.selectedOptions[0];
+
+  locationSearch.value =
+    selectedOption && selectedOption.value
+      ? selectedOption.textContent.trim()
+      : "";
+}
+
+function renderLocationOptions(keyword = "") {
+  if (!citySelect || !locationOptions) return;
+
+  const searchTerm = keyword.trim().toLowerCase();
+
+  locationOptions.innerHTML = "";
+
+  let totalResults = 0;
+
+  Array.from(citySelect.querySelectorAll("optgroup")).forEach((group) => {
+    const matchingOptions = Array.from(group.querySelectorAll("option")).filter(
+      (option) => {
+        const searchableText =
+          `${option.textContent} ${group.label}`.toLowerCase();
+
+        return searchableText.includes(searchTerm);
+      },
+    );
+
+    if (!matchingOptions.length) return;
+
+    const groupWrapper = document.createElement("div");
+
+    const groupLabel = document.createElement("p");
+    groupLabel.className =
+      "px-3 pt-2 pb-1 text-[10px] font-bold uppercase tracking-wider text-[#829487]";
+    groupLabel.textContent = group.label;
+
+    groupWrapper.appendChild(groupLabel);
+
+    matchingOptions.forEach((option) => {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.role = "option";
+      button.className =
+        "block w-full rounded px-3 py-2.5 text-left text-xs font-medium text-[#294C3E] transition hover:bg-[#EAF6EF] hover:text-primary";
+      button.textContent = option.textContent.trim();
+
+      button.setAttribute(
+        "aria-selected",
+        String(option.value === citySelect.value),
+      );
+
+      button.addEventListener("click", () => {
+        citySelect.value = option.value;
+        syncLocationSearchValue();
+        closeLocationDropdown();
+
+        citySelect.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      groupWrapper.appendChild(button);
+      totalResults += 1;
+    });
+
+    locationOptions.appendChild(groupWrapper);
+  });
+
+  if (totalResults === 0) {
+    const emptyMessage = document.createElement("p");
+
+    emptyMessage.className = "px-3 py-4 text-center text-xs text-[#829487]";
+    emptyMessage.textContent = "Lokasi tidak ditemukan.";
+
+    locationOptions.appendChild(emptyMessage);
+  }
+}
+
+function openLocationDropdown() {
+  if (!locationOptions || !locationSearch) return;
+
+  locationOptions.classList.remove("hidden");
+  locationSearch.setAttribute("aria-expanded", "true");
+
+  renderLocationOptions();
+}
+
+function closeLocationDropdown() {
+  if (!locationOptions || !locationSearch) return;
+
+  locationOptions.classList.add("hidden");
+  locationSearch.setAttribute("aria-expanded", "false");
+  syncLocationSearchValue();
+}
+
+// LOCATION SEARCH EVENTS
+locationSearch?.addEventListener("focus", () => {
+  locationSearch.value = "";
+  openLocationDropdown();
+});
+
+locationSearch?.addEventListener("click", () => {
+  openLocationDropdown();
+});
+
+locationSearch?.addEventListener("input", () => {
+  openLocationDropdown();
+  renderLocationOptions(locationSearch.value);
+});
+
+locationSearch?.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeLocationDropdown();
+    locationSearch.blur();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (locationPicker && !locationPicker.contains(event.target)) {
+    closeLocationDropdown();
+  }
+});
 
 async function loadIndonesiaCities() {
   if (!citySelect) return;
@@ -238,10 +361,7 @@ async function loadIndonesiaCities() {
   }
 }
 
-/* =========================================
-   SELECTED REGION
-========================================= */
-
+// SELECTED REGION
 function getSelectedRegion() {
   const option = citySelect?.selectedOptions?.[0];
 
@@ -271,6 +391,7 @@ function updateSelectedRegion() {
 
 citySelect?.addEventListener("change", () => {
   updateSelectedRegion();
+  syncLocationSearchValue();
 
   currentSchedule = [];
   currentRegion = null;
@@ -286,10 +407,7 @@ citySelect?.addEventListener("change", () => {
   setStatus("Wilayah dipilih. Klik Tampilkan Jadwal untuk melanjutkan.");
 });
 
-/* =========================================
-   GEOCODING - OPENSTREETMAP NOMINATIM
-========================================= */
-
+// GEOCODING - OPENSTREETMAP NOMINATIM
 function getCoordinateCacheKey(region) {
   return COORDINATE_CACHE_PREFIX + String(region.id);
 }
@@ -316,7 +434,7 @@ async function geocodeRegion(region) {
     };
   }
 
-  // Nominatim membatasi penggunaan publik maksimal 1 request/detik.
+  // membatasi penggunaan publik maksimal 1 request/detik.
   const elapsed = Date.now() - lastGeocodingRequest;
 
   if (elapsed < 1100) {
@@ -366,10 +484,7 @@ async function geocodeRegion(region) {
   };
 }
 
-/* =========================================
-   ALADHAN API - CALENDAR BY COORDINATES
-========================================= */
-
+// ALADHAN API - CALENDAR BY COORDINATES
 async function fetchMonthByCoordinates(year, month, latitude, longitude) {
   const url = new URL(`${API_ALADHAN}/calendar/${year}/${month}`);
 
@@ -388,10 +503,7 @@ async function fetchMonthByCoordinates(year, month, latitude, longitude) {
   return payload.data;
 }
 
-/* =========================================
-   ALADHAN API - FALLBACK BY ADDRESS
-========================================= */
-
+// ALADHAN API - FALLBACK BY ADDRESS
 async function fetchMonthByAddress(year, month, region) {
   const address = [region.name, region.province, "Indonesia"].join(", ");
 
@@ -411,10 +523,7 @@ async function fetchMonthByAddress(year, month, region) {
   return payload.data;
 }
 
-/* =========================================
-   FETCH RAMADAN CALENDAR
-========================================= */
-
+// FETCH RAMADAN CALENDAR
 async function fetchRamadanCalendar(region) {
   let monthlyData = [];
   let source = "coordinates";
@@ -445,7 +554,7 @@ async function fetchRamadanCalendar(region) {
     source = "address";
 
     setStatus(
-      `Koordinat tidak dapat digunakan. Mencoba pencarian alamat melalui AlAdhan...`,
+      "Koordinat tidak dapat digunakan. Mencoba pencarian alamat melalui AlAdhan...",
     );
 
     const results = await Promise.all(
@@ -471,10 +580,7 @@ async function fetchRamadanCalendar(region) {
   };
 }
 
-/* =========================================
-   RENDER SCHEDULE
-========================================= */
-
+// RENDER SCHEDULE
 function renderRows(days) {
   if (!days.length) {
     scheduleBody.innerHTML = `
@@ -498,25 +604,45 @@ function renderRows(days) {
         : `Hari ${index + 1}`;
 
       return `
-        <tr class="border-b border-[#EDF0E9] text-center transition hover:bg-accent hover:text-primary hover:font-bold">
-          <td class="p-4">${index + 1}</td>
-          <td class="p-4">${escapeHTML(hijriDate)}</td>
-          <td class="p-4">${escapeHTML(cleanTime(timings.Imsak))}</td>
-          <td class="p-4">${escapeHTML(cleanTime(timings.Fajr))}</td>
-          <td class="p-4">${escapeHTML(cleanTime(timings.Dhuhr))}</td>
-          <td class="p-4">${escapeHTML(cleanTime(timings.Asr))}</td>
-          <td class="p-4">${escapeHTML(cleanTime(timings.Maghrib))}</td>
-          <td class="p-4">${escapeHTML(cleanTime(timings.Isha))}</td>
+        <tr class="group border-b border-[#EDF0E9] text-center text-white transition hover:bg-accent hover:text-primary hover:font-bold">
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${index + 1}
+          </td>
+
+          <td class="sticky left-0 z-10 bg-primary group-hover:bg-transparent p-4 text-white group-hover:text-primary lg:static">
+            ${escapeHTML(hijriDate)}
+          </td>
+
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${escapeHTML(cleanTime(timings.Imsak))}
+          </td>
+
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${escapeHTML(cleanTime(timings.Fajr))}
+          </td>
+
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${escapeHTML(cleanTime(timings.Dhuhr))}
+          </td>
+
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${escapeHTML(cleanTime(timings.Asr))}
+          </td>
+
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${escapeHTML(cleanTime(timings.Maghrib))}
+          </td>
+
+          <td class="p-4 text-white  group-hover:text-primary">
+            ${escapeHTML(cleanTime(timings.Isha))}
+          </td>
         </tr>
       `;
     })
     .join("");
 }
 
-/* =========================================
-   LOAD SCHEDULE
-========================================= */
-
+// LOAD SCHEDULE
 async function loadSchedule() {
   if (!citySelect || !loadButton || !scheduleBody) {
     return;
@@ -585,91 +711,106 @@ async function loadSchedule() {
     setStatus(`Gagal memuat jadwal ${region.name}. ${error.message}`, "error");
   } finally {
     loadButton.disabled = false;
+
     loadButton.innerHTML = `
       Tampilkan Jadwal
-      
     `;
   }
 }
 
 loadButton?.addEventListener("click", loadSchedule);
 
-/* =========================================
-   DOWNLOAD SCHEDULE - CSV
-========================================= */
+// DOWNLOAD SCHEDULE - PDF
+async function downloadSchedule() {
+  const mainContent = document.getElementById("jadwal");
 
-function downloadSchedule() {
   if (!currentSchedule.length || !currentRegion) {
     setStatus("Muat jadwal terlebih dahulu sebelum mengunduh.", "error");
 
     return;
   }
 
-  const rows = [
-    [
-      "No",
-      "Tanggal Hijriah",
-      "Imsak",
-      "Subuh",
-      "Dzuhur",
-      "Ashar",
-      "Maghrib",
-      "Isya",
-    ],
-  ];
+  if (!mainContent) {
+    setStatus("Konten jadwal tidak ditemukan.", "error");
+    return;
+  }
 
-  currentSchedule.forEach((day, index) => {
-    const timings = day.timings || {};
-    const hijri = day.date?.hijri;
+  if (typeof html2pdf === "undefined") {
+    setStatus("Library PDF gagal dimuat. Silakan coba kembali.", "error");
 
-    rows.push([
-      index + 1,
-      hijri
-        ? `${hijri.day} ${hijri.month?.en || "Ramadan"} ${hijri.year} H`
-        : `Hari ${index + 1}`,
-      cleanTime(timings.Imsak),
-      cleanTime(timings.Fajr),
-      cleanTime(timings.Dhuhr),
-      cleanTime(timings.Asr),
-      cleanTime(timings.Maghrib),
-      cleanTime(timings.Isha),
-    ]);
-  });
+    return;
+  }
 
-  const csvContent = rows
-    .map((row) =>
-      row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(","),
-    )
-    .join("\n");
+  if (downloadButton) {
+    downloadButton.disabled = true;
+  }
 
-  const blob = new Blob(["\uFEFF" + csvContent], {
-    type: "text/csv;charset=utf-8;",
-  });
+  try {
+    const safeName = currentRegion.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
 
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
+    const options = {
+      margin: [8, 8, 8, 8],
 
-  const safeName = currentRegion.name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+      filename: `jadwal-imsakiyah-${safeName}-ramadan-2027.pdf`,
 
-  link.href = url;
-  link.download = `jadwal-imsakiyah-${safeName}-ramadan-2027.csv`;
+      image: {
+        type: "jpeg",
+        quality: 0.98,
+      },
 
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#f0faf5",
+        scrollX: 0,
+        scrollY: 0,
 
-  URL.revokeObjectURL(url);
+        onclone: (clonedDocument) => {
+          const clonedWrapper = clonedDocument.getElementById(
+            "scheduleTableWrapper",
+          );
 
-  setStatus("Jadwal berhasil diunduh dalam format CSV.");
+          if (clonedWrapper) {
+            clonedWrapper.style.maxHeight = "none";
+            clonedWrapper.style.height = "auto";
+            clonedWrapper.style.overflow = "visible";
+          }
+        },
+
+        ignoreElements: (element) => element.id === "share",
+      },
+
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "landscape",
+      },
+
+      pagebreak: {
+        mode: ["css", "legacy"],
+      },
+    };
+
+    await html2pdf().set(options).from(mainContent).save();
+
+    setStatus("Jadwal berhasil diunduh dalam format PDF.");
+  } catch (error) {
+    console.error("Gagal membuat PDF:", error);
+
+    setStatus("PDF gagal dibuat. Silakan coba kembali.", "error");
+  } finally {
+    if (downloadButton) {
+      downloadButton.disabled = false;
+    }
+  }
 }
 
-/* =========================================
-   SHARE SCHEDULE
-========================================= */
+downloadButton?.addEventListener("click", downloadSchedule);
 
+// SHARE SCHEDULE
 function getShareText() {
   if (!currentRegion) {
     return "Jadwal Imsakiyah Ramadan 1448 H";
@@ -710,6 +851,7 @@ function shareFacebook() {
 
 function shareEmail() {
   const subject = encodeURIComponent(getShareText());
+
   const body = encodeURIComponent(
     `${getShareText()}\n\n${window.location.href}`,
   );
@@ -717,22 +859,80 @@ function shareEmail() {
   window.location.href = `mailto:?subject=${subject}&body=${body}`;
 }
 
-/* =========================================
-   GLOBAL FUNCTIONS
-   For existing inline HTML buttons
-========================================= */
+// SHARE MENU EVENTS
+shareButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
 
+  if (!shareMenu) return;
+
+  const isOpening = shareMenu.classList.contains("hidden");
+
+  shareMenu.classList.toggle("hidden", !isOpening);
+
+  shareButton.setAttribute("aria-expanded", String(isOpening));
+});
+
+// SHARE ACTIONS
+const shareActions = {
+  whatsapp: shareWhatsApp,
+  twitter: shareTwitter,
+  facebook: shareFacebook,
+  email: shareEmail,
+};
+
+shareMenu?.querySelectorAll("[data-share]").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const action = button.dataset.share;
+
+    closeShareMenu();
+
+    if (shareActions[action]) {
+      shareActions[action]();
+    }
+  });
+});
+
+// CLOSE SHARE MENU
+function closeShareMenu() {
+  if (!shareMenu) return;
+
+  shareMenu.classList.add("hidden");
+  shareButton?.setAttribute("aria-expanded", "false");
+}
+
+// CLOSE WHEN CLICKING OUTSIDE
+document.addEventListener("click", (event) => {
+  if (
+    shareMenu &&
+    shareButton &&
+    !shareMenu.contains(event.target) &&
+    !shareButton.contains(event.target)
+  ) {
+    closeShareMenu();
+  }
+});
+
+// CLOSE WITH ESCAPE
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeShareMenu();
+  }
+});
+
+// GLOBAL FUNCTIONS
 window.loadJadwalPuasaSholat = loadSchedule;
 window.downloadJadwal = downloadSchedule;
+
 window.shareWhatsApp = shareWhatsApp;
 window.shareTwitter = shareTwitter;
 window.shareFacebook = shareFacebook;
 window.shareEmail = shareEmail;
 
-/* =========================================
-   INITIALIZE
-========================================= */
-
+// INITIALIZE
 async function initializeReminder() {
   if (!citySelect || !scheduleBody) return;
 

@@ -486,6 +486,37 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* REMINDER - TABLE SCROLLBAR */
+#scheduleTableWrapper {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 230, 202, 0.7) rgba(6, 78, 53, 0.5);
+  -webkit-overflow-scrolling: touch;
+}
+
+#scheduleTableWrapper::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+#scheduleTableWrapper::-webkit-scrollbar-track {
+  background: rgba(6, 78, 53, 0.5);
+  border-radius: 20px;
+}
+
+#scheduleTableWrapper::-webkit-scrollbar-thumb {
+  background: rgba(185, 230, 202, 0.7);
+  border: 1px solid rgba(6, 78, 53, 0.3);
+  border-radius: 20px;
+}
+
+#scheduleTableWrapper::-webkit-scrollbar-thumb:hover {
+  background: #b9e6ca;
+}
+
+#scheduleTableWrapper::-webkit-scrollbar-corner {
+  background: #064e35;
+}
+
 /* ANIMATIONS */
 @keyframes moon-float {
   0%,
