@@ -605,7 +605,7 @@ function renderRows(days) {
 
       return `
         <tr class="group border-b border-[#EDF0E9] text-center text-white transition hover:bg-accent hover:text-primary hover:font-bold">
-          <td class="p-4 text-white  group-hover:text-primary">
+          <td class="p-4 text-white group-hover:text-primary">
             ${index + 1}
           </td>
 

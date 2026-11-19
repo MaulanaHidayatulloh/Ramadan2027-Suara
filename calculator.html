@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>The Calculator - RamadanSuara</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./dist/output.css" />
+
+    <!-- Icon -->
+    <link rel="icon" href="./assets/icons/home-back-logo.svg" />
+  </head>
+
+  <body class="bg-[#F7F8F3] text-[#173B32] antialiased">
+    <!-- NAVBAR -->
+    <nav class="navbar fixed inset-x-0 top-0 z-50">
+      <div
+        class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 lg:px-10"
+      >
+        <!-- Logo -->
+        <a href="./index.html" class="flex flex-col">
+          <span class="font-display text-2xl font-bold text-white">
+            Ramadan<span class="text-emerald-300">Suara</span>
+          </span>
+          <span class="text-[9px] font-semibold tracking-[0.25em] text-white">
+            1448 HIJRIAH
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden items-center gap-9 md:flex">
+          <a href="./index.html" class="nav-link">Beranda</a>
+          <a href="./reminder.html" class="nav-link">The Reminder</a>
+          <a href="./calculator.html" class="nav-link active">The Calculator</a>
+          <a href="./direction.html" class="nav-link">The Direction</a>
+        </div>
+
+        <!-- Suara.com -->
+        <a
+          href="https://www.suara.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Kunjungi Suara.com"
+          class="hidden h-10 w-10 items-center justify-center rounded-full transition md:flex lg:h-12 lg:w-12"
+        >
+          <img src="./assets/icons/home-back-logo.svg" alt="Suara.com" />
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button
+          id="menu-toggle"
+          type="button"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:bg-white/10 md:hidden"
+        >
+          <svg
+            id="menu-icon"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="mobile-menu"
+        class="hidden max-h-[calc(100dvh-76px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-emerald-950/95 px-6 py-5 backdrop-blur-xl md:hidden"
+      >
+        <div class="flex flex-col gap-2">
+          <a href="./index.html" class="mobile-nav-link">Beranda</a>
+          <a href="./reminder.html" class="mobile-nav-link"> The Reminder </a>
+          <a href="./calculator.html" class="mobile-nav-link active">
+            The Calculator
+          </a>
+          <a href="./direction.html" class="mobile-nav-link"> The Direction </a>
+        </div>
+
+        <!-- Media Lainnya -->
+        <div class="mt-6 border-t border-dashed border-white/20 pt-5">
+          <p
+            class="mb-5 text-center text-[10px] font-bold tracking-[0.25em] text-emerald-300 uppercase"
+          >
+            Media Lainnya
+          </p>
+
+          <div class="grid grid-cols-3 gap-5">
+            <a
+              href="https://www.suara.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/suara.svg"
+                alt="Suara"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.matamata.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/matamata.svg"
+                alt="MataMata"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.bolatimes.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/bolatimes.svg"
+                alt="BolaTimes"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.hitekno.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/hitekno.svg"
+                alt="HiTekno"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.dewiku.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/dewiku.svg"
+                alt="Dewiku"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.mobimoto.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/mobimoto.svg"
+                alt="Mobimoto"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.guideku.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/guideku.svg"
+                alt="Guideku"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.himedik.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/himedik.svg"
+                alt="Himedik"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <img
+              src="./assets/icons/regional.svg"
+              alt="Regional"
+              class="h-7 w-full object-contain"
+            />
+            <img
+              src="./assets/icons/clickmov.svg"
+              alt="Clickmov"
+              class="h-7 w-full object-contain"
+            />
+            <a
+              href="https://yoursay.suara.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/yoursay.svg"
+                alt="YourSay"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.serbada.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/serbada.svg"
+                alt="Serbada"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.theindonesia.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/theind.svg"
+                alt="The Ind"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://hits.suara.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/beritahits.svg"
+                alt="Berita Hits"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+            <a
+              href="https://www.iklandisini.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/iklandisini.svg"
+                alt="Iklan Disini"
+                class="h-7 w-full object-contain"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Backdrop -->
+    <div
+      id="mobile-menu-backdrop"
+      class="fixed inset-0 z-40 hidden bg-black/40 backdrop-blur-sm md:hidden"
+      aria-hidden="true"
+    ></div>
+
+    <!-- HERO SECTION -->
+    <section
+      class="relative isolate flex items-center overflow-hidden bg-gradient-to-br from-[#064E35] via-[#075B42] to-[#032D25] pt-[60px] px-5 lg:px-10"
+    >
+      <!-- Moon -->
+      <div
+        class="pointer-events-none absolute right-0 top-[56%] -z-10 -translate-y-1/2 text-[450px] leading-none text-white/[0.05] md:right-[20%]"
+      >
+        ☾
+      </div>
+
+      <!-- Stars -->
+      <span
+        class="absolute right-[18%] top-[25%] text-3xl text-white/70 animate-[star-twinkle_4s_ease-in-out_infinite]"
+      >
+        ✦
+      </span>
+
+      <span
+        class="absolute right-[35%] top-[18%] text-xl text-white/70 animate-[star-twinkle_5s_ease-in-out_infinite]"
+      >
+        ✧
+      </span>
+
+      <span
+        class="absolute right-[12%] bottom-[25%] text-2xl text-white/70 animate-[star-twinkle_4s_ease-in-out_infinite]"
+      >
+        ✦
+      </span>
+
+      <!-- Lantern -->
+      <div
+        class="pointer-events-none absolute right-[10%] top-0 origin-top animate-[lantern-swing_5s_ease-in-out_infinite]"
+      >
+        <div
+          class="mx-auto h-33 w-px bg-gradient-to-b from-transparent to-white"
+        ></div>
+        <div class="lantern-body">
+          <span></span>
+        </div>
+      </div>
+
+      <div class="w-full px-5 py-24 lg:px-10">
+        <div class="relative z-10">
+          <h1
+            class="font-display text-6xl font-bold leading-[1.08] tracking-normal text-white sm:text-7xl lg:text-[82px]"
+          >
+            The Calculator
+            <br />
+            <span class="text-emerald-300">Ramadan Suara</span>
+          </h1>
+
+          <p
+            class="mt-7 max-w-3xl text-sm leading-8 text-white/90 md:text-base"
+          >
+            Tunaikan zakat dengan lebih mudah dan terencana. Hitung estimasi
+            zakat dari pendapatan atau harta yang kamu miliki melalui kalkulator
+            zakat Ramadan Suara.
+          </p>
+
+          <div class="mt-10 flex flex-wrap items-center">
+            <a
+              href="#kalkulator"
+              class="group inline-flex items-center gap-5 rounded-xl bg-white px-7 py-4 text-xs font-bold text-primary-dark transition hover:bg-emerald-300"
+            >
+              MULAI HITUNG ZAKAT
+              <span class="text-lg">↓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main id="kalkulator" class="bg-[#f0faf5] px-5 py-15 lg:px-15">
+      <div class="mx-auto max-w-full">
+        <!-- Heading -->
+        <div class="mx-auto mb-8 max-w-4xl text-center">
+          <h2
+            class="font-display text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl"
+          >
+            Hitung Zakat, Sempurnakan Ibadah
+          </h2>
+
+          <p class="mt-5 text-sm leading-7 text-black/60 md:text-base">
+            Pilih jenis zakat yang ingin kamu hitung. Masukkan informasi harta
+            atau pendapatan untuk mengetahui estimasi kewajiban zakatmu.
+          </p>
+        </div>
+
+        <!-- Calculator -->
+        <section
+          class="mx-auto max-w-full overflow-hidden rounded-3xl border border-primary/15 bg-white shadow-[0_20px_60px_rgba(20,60,40,0.07)]"
+        >
+          <div
+            class="relative overflow-hidden bg-primary px-6 py-7 text-white sm:px-9 sm:py-8"
+          >
+            <div class="relative z-10">
+              <h3 class="mt-2 font-display text-2xl font-bold sm:text-3xl">
+                Kalkulator Zakat
+              </h3>
+              <p class="mt-2 text-xs text-white/90 sm:text-sm">
+                Hitung dan rencanakan zakatmu dengan lebih mudah.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 lg:p-9">
+            <!-- Type Selector -->
+            <div>
+              <p
+                class="mb-4 text-xs font-bold tracking-wider text-primary-dark uppercase"
+              >
+                Pilih Jenis Zakat
+              </p>
+
+              <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+                <button
+                  type="button"
+                  data-zakat-tab="penghasilan"
+                  aria-pressed="true"
+                  class="zakat-tab cursor-pointer rounded-xl border border-primary bg-primary-light/70 p-4 text-left transition hover:border-primary"
+                >
+                  <span
+                    class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#F0F7F2] text-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M0 109.5L0 419.6c0 19.4 11.8 37.3 30.3 43.3 94 30 158.8 8.4 223.3-13.1 62.4-20.8 124.4-41.5 212.1-15.3 22.2 6.6 46.2-8.8 46.2-32l0-310.1c0-19.4-11.8-37.3-30.3-43.3-94-30-158.8-8.4-223.3 13.1-62.4 20.8-124.4 41.5-212.1 15.3-22.2-6.6-46.3 8.8-46.3 32zM256 368c-53 0-96-50.1-96-112s43-112 96-112 96 50.1 96 112-43 112-96 112zM127.1 405.5c.7 4.4-2.8 8.1-7.2 8.1-15.7 0-32.1-1.8-50-6.1-3.5-.8-6-4-6-7.7L64 360c0-4.4 3.6-8.1 8-7.5 28.1 3.5 50.6 25.2 55.2 53zM448 354.6c0 5-4.6 8.8-9.5 8-15.4-2.5-30.2-3.9-44.4-4.3-4.9-.1-8.7-4.5-7.2-9.2 7.3-23.7 28-41.4 53.2-44.6 4.4-.5 8 3.1 8 7.5l0 42.6zm-8-195.1c-28.1-3.5-50.6-25.2-55.2-53-.7-4.4 2.8-8.1 7.2-8.1 15.7 0 32.1 1.8 50 6.1 3.5 .8 6 4 6 7.7l0 39.9c0 4.4-3.6 8.1-8 7.5zm-322.1-5.8c4.9 .1 8.7 4.5 7.2 9.2-7.3 23.7-28 41.4-53.2 44.6-4.4 .5-8-3.1-8-7.5l0-42.6c0-5 4.6-8.8 9.5-8 15.4 2.5 30.2 3.9 44.4 4.3zM240 188c-11 0-20 9-20 20 0 9.7 6.9 17.7 16 19.6l0 48.4-4 0c-11 0-20 9-20 20s9 20 20 20l48 0c11 0 20-9 20-20s-9-20-20-20l-4 0 0-68c0-11-9-20-20-20l-16 0z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="block text-xs font-bold text-primary"
+                    >Penghasilan</span
+                  >
+                  <span class="mt-1 block text-[10px] text-black/60"
+                    >Gaji &amp; profesi</span
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  data-zakat-tab="tabungan"
+                  aria-pressed="false"
+                  class="zakat-tab cursor-pointer rounded-xl border border-[#E6EEE8] bg-white p-4 text-left transition hover:border-primary"
+                >
+                  <span
+                    class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#F0F7F2] text-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      height="20"
+                      width="20"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M64 32C28.7 32 0 60.7 0 96L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-192c0-35.3-28.7-64-64-64L72 128c-13.3 0-24-10.7-24-24S58.7 80 72 80l384 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L64 32zM416 256a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="block text-xs font-bold text-primary"
+                    >Tabungan</span
+                  >
+                  <span class="mt-1 block text-[10px] text-black/60"
+                    >Simpanan &amp; harta</span
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  data-zakat-tab="emas"
+                  aria-pressed="false"
+                  class="zakat-tab cursor-pointer rounded-xl border border-[#E6EEE8] bg-white p-4 text-left transition hover:border-primary"
+                >
+                  <span
+                    class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#F0F7F2] text-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      height="20"
+                      width="20"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M128 96l0-16c0-44.2 86-80 192-80S512 35.8 512 80l0 16c0 30.6-41.3 57.2-102 70.7-2.4-2.8-4.9-5.5-7.4-8-15.5-15.3-35.5-26.9-56.4-35.5-41.9-17.5-96.5-27.1-154.2-27.1-21.9 0-43.3 1.4-63.8 4.1-.2-1.3-.2-2.7-.2-4.1zM432 353l0-46.2c15.1-3.9 29.3-8.5 42.2-13.9 13.2-5.5 26.1-12.2 37.8-20.3l0 15.4c0 26.8-31.5 50.5-80 65zm0-96l0-33c0-4.5-.4-8.8-1-13 15.5-3.9 30-8.6 43.2-14.2s26.1-12.2 37.8-20.3l0 15.4c0 26.8-31.5 50.5-80 65zM0 240l0-16c0-44.2 86-80 192-80s192 35.8 192 80l0 16c0 44.2-86 80-192 80S0 284.2 0 240zm384 96c0 44.2-86 80-192 80S0 380.2 0 336l0-15.4c11.6 8.1 24.5 14.7 37.8 20.3 41.9 17.5 96.5 27.1 154.2 27.1s112.3-9.7 154.2-27.1c13.2-5.5 26.1-12.2 37.8-20.3l0 15.4zm0 80.6l0 15.4c0 44.2-86 80-192 80S0 476.2 0 432l0-15.4c11.6 8.1 24.5 14.7 37.8 20.3 41.9 17.5 96.5 27.1 154.2 27.1s112.3-9.7 154.2-27.1c13.2-5.5 26.1-12.2 37.8-20.3z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="block text-xs font-bold text-primary-dark"
+                    >Emas</span
+                  >
+                  <span class="mt-1 block text-[10px] text-black/60"
+                    >Kepemilikan emas</span
+                  >
+                </button>
+
+                <button
+                  type="button"
+                  data-zakat-tab="perniagaan"
+                  aria-pressed="false"
+                  class="zakat-tab cursor-pointer rounded-xl border border-[#E6EEE8] bg-white p-4 text-left transition hover:border-primary"
+                >
+                  <span
+                    class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#F0F7F2] text-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      height="20"
+                      width="20"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M328 112l-144 0-37.3-74.5c-1.8-3.6-2.7-7.6-2.7-11.6 0-14.3 11.6-25.9 25.9-25.9L342.1 0c14.3 0 25.9 11.6 25.9 25.9 0 4-.9 8-2.7 11.6L328 112zM169.6 160l172.8 0 48.7 40.6C457.6 256 496 338 496 424.5 496 472.8 456.8 512 408.5 512l-305.1 0C55.2 512 16 472.8 16 424.5 16 338 54.4 256 120.9 200.6L169.6 160zM260 224c-11 0-20 9-20 20l0 4c-28.8 .3-52 23.7-52 52.5 0 25.7 18.5 47.6 43.9 51.8l41.7 7c6 1 10.4 6.2 10.4 12.3 0 6.9-5.6 12.5-12.5 12.5L216 384c-11 0-20 9-20 20s9 20 20 20l24 0 0 4c0 11 9 20 20 20s20-9 20-20l0-4.7c25-4.1 44-25.7 44-51.8 0-25.7-18.5-47.6-43.9-51.8l-41.7-7c-6-1-10.4-6.2-10.4-12.3 0-6.9 5.6-12.5 12.5-12.5l47.5 0c11 0 20-9 20-20s-9-20-20-20l-8 0 0-4c0-11-9-20-20-20z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="block text-xs font-bold text-primary-dark"
+                    >Perniagaan</span
+                  >
+                  <span class="mt-1 block text-[10px] text-black/60"
+                    >Aset usaha</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <!-- Form & Result -->
+            <div class="mt-9 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+              <!-- Input -->
+              <div>
+                <div class="mb-6">
+                  <p
+                    id="form-title"
+                    class="font-display text-xl font-bold text-primary"
+                  >
+                    Zakat Penghasilan
+                  </p>
+                  <p
+                    id="form-description"
+                    class="mt-2 text-xs leading-6 text-black/60"
+                  >
+                    Masukkan pendapatan rutin dan pendapatan tambahan yang kamu
+                    terima.
+                  </p>
+                </div>
+
+                <!-- Penghasilan -->
+                <div data-zakat-form="penghasilan" class="space-y-5">
+                  <div>
+                    <label
+                      for="income-main"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Gaji / Pendapatan Utama
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="income-main"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="income-extra"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Tunjangan / Bonus / Pendapatan Lain
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="income-extra"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="income-period"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Periode Pendapatan
+                    </label>
+                    <select
+                      id="income-period"
+                      class="zakat-input cursor-pointer w-full rounded-xl border border-gray-300 bg-gray-100 px-4 py-3.5 text-sm font-semibold text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    >
+                      <option value="monthly">Per Bulan</option>
+                      <option value="yearly">Per Tahun</option>
+                    </select>
+                  </div>
+
+                  <div
+                    class="rounded-xl border border-primary/25 bg-primary-light/70 p-4"
+                  >
+                    <p class="text-[11px] leading-6 text-primary-dark/65">
+                      Penghasilan yang dihitung mencakup gaji, tunjangan, bonus,
+                      honorarium, dan pendapatan halal lainnya.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Tabungan -->
+                <div data-zakat-form="tabungan" class="hidden space-y-5">
+                  <div>
+                    <label
+                      for="saving-cash"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Uang Tunai &amp; Saldo Rekening
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="saving-cash"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="saving-investment"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Investasi / Aset Keuangan Lain
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="saving-investment"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="saving-debt"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Kewajiban Jangka Pendek
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="saving-debt"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="saving-gold-price"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Harga Emas per Gram
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="saving-gold-price"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="Masukkan harga emas"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-xl border border-gray-300 p-4"
+                  >
+                    <input
+                      id="saving-haul"
+                      type="checkbox"
+                      class="mt-0.5 h-4 w-4 cursor-pointer accent-primary"
+                    />
+                    <span>
+                      <span class="block text-xs font-bold text-black"
+                        >Harta telah dimiliki selama satu tahun hijriah</span
+                      >
+                      <span
+                        class="mt-1 block text-[10px] leading-5 text-black/60"
+                        >Centang jika syarat haul telah terpenuhi.</span
+                      >
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Emas -->
+                <div data-zakat-form="emas" class="hidden space-y-5">
+                  <div>
+                    <label
+                      for="gold-amount"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Jumlah Emas yang Dimiliki
+                    </label>
+                    <div class="relative">
+                      <input
+                        id="gold-amount"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 px-4 py-3.5 pr-14 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                      <span
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-black/50"
+                        >Gram</span
+                      >
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="gold-price"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Harga Emas per Gram
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="gold-price"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="Masukkan harga emas"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E2ECE5] p-4"
+                  >
+                    <input
+                      id="gold-haul"
+                      type="checkbox"
+                      class="mt-0.5 h-4 w-4 accent-primary cursor-pointer"
+                    />
+                    <span>
+                      <span class="block text-xs font-bold text-black"
+                        >Emas telah dimiliki selama satu tahun hijriah</span
+                      >
+                      <span
+                        class="mt-1 block text-[10px] leading-5 text-black/60"
+                        >Centang jika syarat haul telah terpenuhi.</span
+                      >
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Perniagaan -->
+                <div data-zakat-form="perniagaan" class="hidden space-y-5">
+                  <div>
+                    <label
+                      for="trade-assets"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Total Aset Lancar
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="trade-assets"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                    <p class="mt-2 text-[10px] leading-5 text-black/70">
+                      Contoh: kas, stok barang dagangan, piutang lancar.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label
+                      for="trade-debt"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Kewajiban Jangka Pendek
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="trade-debt"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="0"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="trade-gold-price"
+                      class="mb-2 block text-xs font-bold text-black"
+                    >
+                      Harga Emas per Gram
+                    </label>
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-black"
+                        >Rp</span
+                      >
+                      <input
+                        id="trade-gold-price"
+                        data-money
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="Masukkan harga emas"
+                        class="zakat-input w-full rounded-xl border border-gray-300 bg-gray-100 py-3.5 pl-11 pr-4 text-sm font-semibold text-black outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10"
+                      />
+                    </div>
+                  </div>
+
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E2ECE5] p-4"
+                  >
+                    <input
+                      id="trade-haul"
+                      type="checkbox"
+                      class="mt-0.5 h-4 w-4 accent-primary cursor-pointer"
+                    />
+                    <span>
+                      <span class="block text-xs font-bold text-black"
+                        >Harta perniagaan telah mencapai haul</span
+                      >
+                      <span
+                        class="mt-1 block text-[10px] leading-5 text-black/60"
+                        >Centang jika telah dimiliki selama satu tahun
+                        hijriah.</span
+                      >
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Buttons -->
+                <div class="mt-7 flex gap-3">
+                  <button
+                    id="calculate-zakat"
+                    type="button"
+                    class="flex-1 cursor-pointer rounded-xl bg-primary px-5 py-4 text-xs font-bold tracking-wider text-white transition hover:bg-primary-dark"
+                  >
+                    HITUNG ZAKAT
+                  </button>
+
+                  <button
+                    id="reset-zakat"
+                    type="button"
+                    class="rounded-xl cursor-pointer bg-red-500 px-5 py-4 text-xs font-bold text-white transition hover:bg-red-700"
+                  >
+                    RESET
+                  </button>
+                </div>
+              </div>
+
+              <!-- Result -->
+              <div
+                class="flex flex-col rounded-2xl bg-primary-light/60 p-5 sm:p-7"
+              >
+                <div>
+                  <p
+                    class="text-[10px] font-bold tracking-wide text-primary/60 uppercase"
+                  >
+                    - Hasil Perhitungan
+                  </p>
+                  <h4
+                    class="mt-2 font-display text-xl font-bold text-black tracking-widest"
+                  >
+                    Ringkasan Zakat
+                  </h4>
+                </div>
+
+                <div
+                  class="mt-7 space-y-4 rounded-xl border border-gray-300 bg-white p-5"
+                >
+                  <div class="flex items-center justify-between gap-4 text-xs">
+                    <span class="text-black">Jenis zakat</span>
+                    <span
+                      id="result-type"
+                      class="text-right font-bold text-black"
+                      >Penghasilan</span
+                    >
+                  </div>
+
+                  <div class="h-px bg-black/30"></div>
+
+                  <div class="flex items-center justify-between gap-4 text-xs">
+                    <span class="text-black">Total harta / pendapatan</span>
+                    <span
+                      id="result-total"
+                      class="text-right font-bold text-black"
+                      >Rp 0</span
+                    >
+                  </div>
+
+                  <div class="flex items-center justify-between gap-4 text-xs">
+                    <span class="text-black">Nisab</span>
+                    <span
+                      id="result-nisab"
+                      class="text-right font-bold text-black"
+                      >-</span
+                    >
+                  </div>
+
+                  <div class="flex items-center justify-between gap-4 text-xs">
+                    <span class="text-black/">Kadar zakat</span>
+                    <span class="font-bold text-black">2,5%</span>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-4 flex flex-1 flex-col justify-center rounded-xl bg-white p-6 text-black"
+                >
+                  <div class="flex items-center gap-2">
+                    <p
+                      class="text-[10px] font-bold tracking-[0.2em] text-black uppercase"
+                    >
+                      - Estimasi Zakat
+                    </p>
+                  </div>
+
+                  <p
+                    id="result-zakat"
+                    class="mt-4 break-words text-3xl font-bold sm:text-4xl"
+                  >
+                    Rp 0
+                  </p>
+
+                  <p
+                    id="result-status"
+                    aria-live="polite"
+                    class="mt-3 text-xs leading-6 text-black/50"
+                  >
+                    Masukkan data untuk mulai menghitung zakat.
+                  </p>
+                </div>
+
+                <a
+                  href="https://baznas.go.id/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-primary px-5 py-4 text-xs font-bold tracking-wider text-white transition hover:bg-primary-dark"
+                >
+                  SALURKAN ZAKAT
+                  <span class="text-base">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Note -->
+        <p
+          class="mx-auto mt-7 max-w-3xl text-center text-[12px] leading-6 text-black/70"
+        >
+          Note: Hasil kalkulator merupakan estimasi dan bukan penetapan
+          kewajiban zakat secara resmi. Ketentuan nisab, haul, dan objek zakat
+          dapat berbeda sesuai jenis harta serta pedoman lembaga zakat.
+        </p>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative overflow-hidden bg-[#064e35] text-white">
+      <div class="relative mx-auto max-w-7xl px-5 pt-14 pb-5 lg:px-10 lg:pt-20">
+        <div
+          class="grid grid-cols-1 gap-12 border-b border-white/40 pb-5 md:grid-cols-2 lg:grid-cols-12 lg:gap-10"
+        >
+          <!-- Logo -->
+          <div class="lg:col-span-5">
+            <a href="/" class="inline-flex flex-col">
+              <span
+                class="font-display text-3xl font-bold tracking-tight text-white md:text-4xl"
+              >
+                Ramadan<span class="text-emerald-300">Suara</span>
+              </span>
+              <span
+                class="mt-1 text-[10px] font-semibold tracking-[0.3em] text-white"
+              >
+                1448 HIJRIAH
+              </span>
+            </a>
+
+            <p class="mt-6 max-w-sm text-sm leading-7 text-white/90">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+              distinctio ipsam accusantium quidem molestiae culpa!
+            </p>
+
+            <!-- Social Media -->
+            <div class="mt-7 flex items-center gap-3">
+              <a
+                href="https://instagram.com/suaradotcom"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram Suara.com"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-emerald-300 hover:bg-emerald-300 hover:text-[#064e35]"
+              >
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="https://twitter.com/suaradotcom"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X Suara.com"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-emerald-300 hover:bg-emerald-300 hover:text-[#064e35]"
+              >
+                <svg
+                  class="h-[17px] w-[17px]"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-7.4L5.5 22H2.4l7.3-8.4L1.8 2h6.5l4.4 6.8L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@suaradotcom"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok Suara.com"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-emerald-300 hover:bg-emerald-300 hover:text-[#064e35]"
+              >
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19.6 6.2a5.5 5.5 0 0 1-3.4-1.1V15a6.2 6.2 0 1 1-5.4-6.1v3.3a2.9 2.9 0 1 0 2.1 2.8V2h3.3a5.5 5.5 0 0 0 3.4 3.2v1Z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="lg:col-span-3">
+            <h3
+              class="mb-5 text-xs font-bold tracking-[0.18em] text-emerald-300 uppercase"
+            >
+              Jelajahi
+            </h3>
+
+            <ul class="space-y-3 text-sm text-white/90">
+              <li>
+                <a href="./#beranda" class="transition hover:text-emerald-300">
+                  Beranda
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="./#suarawaktu"
+                  class="transition hover:text-emerald-300"
+                >
+                  Suara & Waktu
+                </a>
+              </li>
+
+              <li>
+                <a href="./#kebaikan" class="transition hover:text-emerald-300">
+                  Suara Kebaikan
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="./#inspirasi"
+                  class="transition hover:text-emerald-300"
+                >
+                  Suara Inspirasi
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Suara.com Links -->
+          <div class="lg:col-span-4">
+            <h3
+              class="mb-5 text-xs font-bold tracking-[0.18em] text-emerald-300 uppercase"
+            >
+              Tentang Suara.com
+            </h3>
+
+            <ul class="grid grid-cols-2 gap-x-5 gap-y-3 text-sm text-white/90">
+              <li>
+                <a
+                  href="https://www.suara.com/pages/redaksi"
+                  target="_blank"
+                  class="transition hover:text-emerald-300"
+                >
+                  Redaksi
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.suara.com/pages/kontak"
+                  target="_blank"
+                  class="transition hover:text-emerald-300"
+                >
+                  Kontak
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.suara.com/pages/tentangkami"
+                  target="_blank"
+                  class="transition hover:text-emerald-300"
+                >
+                  Tentang Kami
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.suara.com/pages/karir"
+                  target="_blank"
+                  class="transition hover:text-emerald-300"
+                >
+                  Karir
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.suara.com/pages/pedomanmediasiber"
+                  target="_blank"
+                  class="transition hover:text-emerald-300"
+                >
+                  Pedoman Media Siber
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.suara.com/pages/kebijakanprivasi"
+                  target="_blank"
+                  class="transition hover:text-emerald-300"
+                >
+                  Kebijakan Privasi
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div
+          class="flex flex-col gap-3 pt-5 text-xs text-white/90 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p>© 2027 Suara.com. All Rights Reserved.</p>
+          <p class="hidden md:flex">RamadanSuara - 1448 Hijriah</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+    <script src="./js/calculator.js"></script>
+  </body>
+</html>
