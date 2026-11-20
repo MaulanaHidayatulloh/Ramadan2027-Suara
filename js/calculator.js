@@ -1,9 +1,4 @@
-/* =========================================
-   ZAKAT CALCULATOR
-========================================= */
-
-// Acuan nisab penghasilan BAZNAS tahun 2026.
-// Perbarui setelah ketetapan resmi tahun 2027 diterbitkan.
+// Acuan nisab penghasilan BAZNAS
 const INCOME_NISAB = {
   monthly: 7640144,
   yearly: 91681728,
@@ -16,16 +11,13 @@ let activeZakatType = "penghasilan";
 
 const zakatTabs = document.querySelectorAll("[data-zakat-tab]");
 const zakatForms = document.querySelectorAll("[data-zakat-form]");
-
 const formTitle = document.getElementById("form-title");
 const formDescription = document.getElementById("form-description");
-
 const resultType = document.getElementById("result-type");
 const resultTotal = document.getElementById("result-total");
 const resultNisab = document.getElementById("result-nisab");
 const resultZakat = document.getElementById("result-zakat");
 const resultStatus = document.getElementById("result-status");
-
 const calculateButton = document.getElementById("calculate-zakat");
 const resetButton = document.getElementById("reset-zakat");
 
@@ -131,7 +123,6 @@ function calculateIncome() {
   const mainIncome = getMoneyValue("income-main");
   const extraIncome = getMoneyValue("income-extra");
   const period = document.getElementById("income-period").value;
-
   const totalIncome = mainIncome + extraIncome;
   const nisab = INCOME_NISAB[period];
 
