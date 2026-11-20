@@ -8,6 +8,7 @@ const ZAKAT_RATE = 0.025;
 const GOLD_NISAB_GRAMS = 85;
 
 let activeZakatType = "penghasilan";
+let previousIncomePeriod = "monthly";
 
 const zakatTabs = document.querySelectorAll("[data-zakat-tab]");
 const zakatForms = document.querySelectorAll("[data-zakat-form]");
@@ -119,10 +120,12 @@ function showResult({ total, nisab, zakat, status }) {
 }
 
 // Perhitungan zakat penghasilan
+// Perhitungan zakat penghasilan
 function calculateIncome() {
   const mainIncome = getMoneyValue("income-main");
   const extraIncome = getMoneyValue("income-extra");
   const period = document.getElementById("income-period").value;
+
   const totalIncome = mainIncome + extraIncome;
   const nisab = INCOME_NISAB[period];
 
@@ -137,13 +140,14 @@ function calculateIncome() {
   }
 
   const isEligible = totalIncome >= nisab;
+  const zakat = isEligible ? totalIncome * ZAKAT_RATE : 0;
 
   showResult({
     total: totalIncome,
     nisab,
-    zakat: isEligible ? totalIncome * ZAKAT_RATE : 0,
+    zakat,
     status: isEligible
-      ? "Pendapatan telah mencapai nisab. Estimasi zakat sebesar 2,5% dari total pendapatan."
+      ? `Pendapatan telah mencapai nisab. Estimasi zakat sebesar 2,5% dari total pendapatan ${period === "monthly" ? "bulanan" : "tahunan"}.`
       : "Pendapatan belum mencapai nisab berdasarkan acuan yang digunakan. Kamu tetap dapat menunaikan infak atau sedekah.",
   });
 }
@@ -300,7 +304,11 @@ function resetZakatCalculator() {
   });
 
   const period = document.getElementById("income-period");
-  if (period) period.value = "monthly";
+
+  if (period) {
+    period.value = "monthly";
+    previousIncomePeriod = "monthly";
+  }
 
   resetResult();
 }
@@ -315,6 +323,39 @@ zakatTabs.forEach((tab) => {
 // Event tombol
 calculateButton?.addEventListener("click", calculateZakat);
 resetButton?.addEventListener("click", resetZakatCalculator);
+
+// Konversi pendapatan saat periode berubah
+const incomePeriodSelect = document.getElementById("income-period");
+
+incomePeriodSelect?.addEventListener("change", (event) => {
+  const newPeriod = event.target.value;
+
+  const mainIncomeInput = document.getElementById("income-main");
+  const extraIncomeInput = document.getElementById("income-extra");
+
+  const mainIncome = getMoneyValue("income-main");
+  const extraIncome = getMoneyValue("income-extra");
+
+  let multiplier = 1;
+
+  if (previousIncomePeriod === "monthly" && newPeriod === "yearly") {
+    multiplier = 12;
+  } else if (previousIncomePeriod === "yearly" && newPeriod === "monthly") {
+    multiplier = 1 / 12;
+  }
+
+  mainIncomeInput.value = mainIncome
+    ? formatRupiah(mainIncome * multiplier)
+    : "";
+
+  extraIncomeInput.value = extraIncome
+    ? formatRupiah(extraIncome * multiplier)
+    : "";
+
+  previousIncomePeriod = newPeriod;
+
+  calculateIncome();
+});
 
 // Inisialisasi
 setZakatType("penghasilan");
