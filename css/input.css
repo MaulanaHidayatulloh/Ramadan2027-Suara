@@ -517,6 +517,87 @@
   background: #064e35;
 }
 
+/* Surah Select */
+.surah-select-container .ts-wrapper {
+  width: 100%;
+}
+
+.surah-select-container .ts-wrapper.single .ts-control {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 42px 0 16px;
+  background: transparent;
+  box-shadow: none;
+  color: black;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.surah-select-container .ts-wrapper.single .ts-control input {
+  color: black;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.surah-select-container .ts-wrapper.single .ts-control input::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.surah-select-container .ts-wrapper.focus .ts-control {
+  border-color: #08784e;
+  box-shadow: 0 0 0 2px rgb(8 120 78 / 10%);
+}
+
+/* Dropdown */
+.surah-select-container .ts-dropdown {
+  margin-top: 6px;
+  overflow: hidden;
+  border: 1px solid #dce9df;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgb(23 59 50 / 10%);
+  color: #294c3e;
+  font-size: 13px;
+}
+
+.surah-select-container .ts-dropdown .ts-dropdown-content {
+  max-height: 260px;
+  padding: 5px;
+}
+
+.surah-select-container .ts-dropdown .option {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.surah-select-container .ts-dropdown .option.active {
+  background: #edf7f0;
+  color: #08784e;
+}
+
+.surah-select-container .ts-dropdown .option.selected {
+  background: #e2f2e8;
+  color: #064e35;
+  font-weight: 700;
+}
+
+.surah-select-container .ts-dropdown .no-results {
+  padding: 12px;
+  color: #789087;
+  font-size: 13px;
+}
+
+.surah-select-container > svg {
+  display: none;
+}
+
 /* ANIMATIONS */
 @keyframes moon-float {
   0%,
